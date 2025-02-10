@@ -43,6 +43,8 @@ Since I synced with remote master before doing the rebase, I should be able to p
 
 ### Patch
 In Git, a patch is a file that contains the differences between two versions of a file or set of files. It represents changes made in your code (such as added, modified, or deleted lines) and can be applied to other branches or repositories.
+`git diff --word-diff` - gives diff word by word
+`git diff --stat` - gives summary of diff
 
 #### For Unstaged changes
 `git diff > local.patch` - storing the diff in a local.patch file
@@ -52,4 +54,20 @@ In Git, a patch is a file that contains the differences between two versions of 
 `git diff chash1 chash2 > local.patch` - storing the diff in a local.patch file
 #### Applying patch
 `git apply > local.patch` - apply the diff from local.patch file
-#### For 
+
+#### To see the last commit changes:
+git show
+#### To create patch file of last committed changes:
+git show --full-index > /Desktop/commited_changes.patch
+
+
+## Reverting changes:
+-- If you want to remove the changes from unstaged area, use below command:
+`git checkout file_name` OR `git checkout .` (to remove all changes)
+-- If we want to remove the changes from staged area, use below command:
+`git reset .` (will move the staged changes to unstaged area)
+`git reset --hard` (will delete all staged changes)
+-- If you want to remove the committed changes, use below command:
+`git reset --soft HEAD^` : this will remove the changes, but will keep the changes in working area
+`git reset --hard HEAD^` : this will remove the all changes and will not keep any of these changes
+in working area
